@@ -13,6 +13,7 @@
 		BE0E080A172BA67C00599EC0 /* SMAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0804172BA67C00599EC0 /* SMAlgorithm.m */; };
 		BE0E080B172BA67C00599EC0 /* SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0807172BA67C00599EC0 /* SMSmartMonkey.m */; };
 		BE0E080C172BA67C00599EC0 /* UIView+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */; };
+		BE0E0812172BB76900599EC0 /* UIButton+SmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0811172BB76900599EC0 /* UIButton+SmartMonkey.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		BE0E0807172BA67C00599EC0 /* SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSmartMonkey.m; sourceTree = "<group>"; };
 		BE0E0808172BA67C00599EC0 /* UIView+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SMSmartMonkey.h"; sourceTree = "<group>"; };
 		BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SMSmartMonkey.m"; sourceTree = "<group>"; };
+		BE0E0810172BB76900599EC0 /* UIButton+SmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SmartMonkey.h"; sourceTree = "<group>"; };
+		BE0E0811172BB76900599EC0 /* UIButton+SmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SmartMonkey.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				BE0E0805172BA67C00599EC0 /* SMConfig.h */,
 				BE0E0806172BA67C00599EC0 /* SMSmartMonkey.h */,
 				BE0E0807172BA67C00599EC0 /* SMSmartMonkey.m */,
+				BE0E0810172BB76900599EC0 /* UIButton+SmartMonkey.h */,
+				BE0E0811172BB76900599EC0 /* UIButton+SmartMonkey.m */,
 				BE0E0808172BA67C00599EC0 /* UIView+SMSmartMonkey.h */,
 				BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */,
 			);
@@ -168,6 +173,7 @@
 				BE0E080A172BA67C00599EC0 /* SMAlgorithm.m in Sources */,
 				BE0E080B172BA67C00599EC0 /* SMSmartMonkey.m in Sources */,
 				BE0E080C172BA67C00599EC0 /* UIView+SMSmartMonkey.m in Sources */,
+				BE0E0812172BB76900599EC0 /* UIButton+SmartMonkey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +274,7 @@
 				BE0E0801172BA63000599EC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

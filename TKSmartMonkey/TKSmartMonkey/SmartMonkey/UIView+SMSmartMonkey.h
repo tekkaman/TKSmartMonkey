@@ -25,4 +25,7 @@
 // whetehr receiver will be covered by its subviews
 - (BOOL)notCoveredBySubviews;
 
+// simualte user behavior
+- (void)simulateAction;
+
 @end

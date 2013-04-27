@@ -11,6 +11,8 @@
 
 @implementation UIView (SMSmartMonkey)
 
+#pragma mark - public methods
+
 - (BOOL)isOnScreen
 {
     UIWindow *window = [UIApplication sharedApplication].delegate.window;
@@ -73,6 +75,41 @@
     
     return [self notCoveredByViews:self.subviews];
 }
+
+- (void)simulateAction
+{
+    NSUInteger maxKeyNum = 3;
+    NSUInteger index = random()%maxKeyNum;
+    
+    index = 2;
+    
+    switch(index)
+    {
+        case 0:
+            if ([self respondsToSelector:@selector(accessibilityScroll:)])
+            {
+                maxKeyNum = UIAccessibilityScrollDirectionPrevious;
+                index = random()%maxKeyNum + 1;
+                [self accessibilityScroll:index];
+                break;
+            }
+        case 1:
+            if ([self respondsToSelector:@selector(accessibilityPerformEscape)])
+            {
+                [self accessibilityPerformEscape];
+                break;
+            }
+        case 2:
+            if ([self respondsToSelector:@selector(accessibilityPerformMagicTap)])
+            {
+                [self accessibilityPerformMagicTap];
+                break;
+            }
+    }
+
+}
+
+#pragma mark - internal methods
 
 - (NSArray*)filterUnintersectedViews:(NSArray*)coverbilityViews
 {

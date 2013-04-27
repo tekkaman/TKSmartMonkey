@@ -25,12 +25,6 @@
 // simulate actions
 + (void)performActionOnView:(UIView*)view;
 
-// simulate control event
-+ (void)sendControlEvent:(UIControlEvents)events withSender:(UIControl*)sender;
-
-// simulate view actions
-+ (void)actionOnView:(UIView*)view;
-
 @end
 
 @implementation SMSmartMonkey
@@ -104,71 +98,12 @@
 
 + (void)performActionOnView:(UIView*)view
 {
-    if ([view isKindOfClass:[UIControl class]] == YES)
+    if ([view respondsToSelector:@selector(simulateAction)])
     {
-        // if view is a UIControl
-        UIControl *control = (UIControl*)view;
-        UIControlEvents events = [control allControlEvents];
-        
-        if (events)
-        {
-            [self sendControlEvent:events withSender:control];
-            return ;
-        }
+        [view simulateAction];
     }
-
-    // if view is not a UIControl
-    [self actionOnView:view];
-}
-
-+ (void)sendControlEvent:(UIControlEvents)events withSender:(UIControl*)sender
-{
-    NSUInteger maxKeyNum = UIControlEventEditingDidEndOnExit;
-    NSUInteger index = random()%maxKeyNum;
-    UIControlEvents event;
-    
-    while(1)
-    {
-        if (events & (1<<index))
-        {
-            event = (1<<index);
-            [sender sendActionsForControlEvents:event];
-            return ;
-        }
-        
-        if (++index == maxKeyNum)
-            index = 0;
-    }
-}
-
-+ (void)actionOnView:(UIView*)view
-{
-    NSUInteger maxKeyNum = 3;
-    NSUInteger index = random()%maxKeyNum;
-    
-    switch(index)
-    {
-        case 0:
-            if ([view respondsToSelector:@selector(accessibilityScroll:)])
-            {
-                maxKeyNum = UIAccessibilityScrollDirectionPrevious;
-                index = random()%maxKeyNum + 1;
-                [view accessibilityScroll:index];
-                break;
-            }
-        case 1:
-            if ([view respondsToSelector:@selector(accessibilityPerformEscape)])
-            {
-                [view accessibilityPerformEscape];
-                break;
-            }
-        case 2:
-            if ([view respondsToSelector:@selector(accessibilityPerformMagicTap)])
-            {
-                [self accessibilityPerformMagicTap];
-                break;
-            }
-    }
+    else
+        NSAssert(0, @"This can't happen. If you down here, You may not include UIView+SMSmartMonkey files.");
 }
 
 @end
