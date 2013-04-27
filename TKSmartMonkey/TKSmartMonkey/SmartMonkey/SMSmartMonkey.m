@@ -1,9 +1,7 @@
 //
 //  SMSmartMonkey.m
-//  BaiduBoxApp
 //
 //  Created by tekka on 13-4-25.
-//  Copyright (c) 2013年 Baidu. All rights reserved.
 //
 
 #import "SMSmartMonkey.h"

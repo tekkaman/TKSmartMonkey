@@ -1,9 +1,7 @@
 //
 //  UIView+SMSmartMonkey.m
-//  BaiduBoxApp
 //
 //  Created by tekka on 13-4-27.
-//  Copyright (c) 2013年 Baidu. All rights reserved.
 //
 
 #import "UIView+SMSmartMonkey.h"

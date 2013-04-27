@@ -1,9 +1,7 @@
 //
 //  SMAlgorithm.h
-//  BaiduBoxApp
 //
 //  Created by tekka on 13-4-26.
-//  Copyright (c) 2013年 Baidu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
