@@ -16,7 +16,6 @@
 		BE0E080A172BA67C00599EC0 /* SMAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0804172BA67C00599EC0 /* SMAlgorithm.m */; };
 		BE0E080B172BA67C00599EC0 /* SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0807172BA67C00599EC0 /* SMSmartMonkey.m */; };
 		BE0E080C172BA67C00599EC0 /* UIView+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */; };
-		BE0E0823172BE16A00599EC0 /* SMActionSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E081E172BE16A00599EC0 /* SMActionSimulator.m */; };
 		BE0E0824172BE16A00599EC0 /* UIButton+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0820172BE16A00599EC0 /* UIButton+SMSmartMonkey.m */; };
 		BE0E0825172BE16A00599EC0 /* UITextField+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0822172BE16A00599EC0 /* UITextField+SMSmartMonkey.m */; };
 /* End PBXBuildFile section */
@@ -53,8 +52,6 @@
 		BE0E0807172BA67C00599EC0 /* SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSmartMonkey.m; sourceTree = "<group>"; };
 		BE0E0808172BA67C00599EC0 /* UIView+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SMSmartMonkey.h"; sourceTree = "<group>"; };
 		BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SMSmartMonkey.m"; sourceTree = "<group>"; };
-		BE0E081D172BE16A00599EC0 /* SMActionSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActionSimulator.h; sourceTree = "<group>"; };
-		BE0E081E172BE16A00599EC0 /* SMActionSimulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActionSimulator.m; sourceTree = "<group>"; };
 		BE0E081F172BE16A00599EC0 /* UIButton+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SMSmartMonkey.h"; sourceTree = "<group>"; };
 		BE0E0820172BE16A00599EC0 /* UIButton+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SMSmartMonkey.m"; sourceTree = "<group>"; };
 		BE0E0821172BE16A00599EC0 /* UITextField+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SMSmartMonkey.h"; sourceTree = "<group>"; };
@@ -126,8 +123,6 @@
 				BE0C10FD17375D27002BD6AC /* SMEvent.m */,
 				BE0C10FE17375D27002BD6AC /* SMTouch.h */,
 				BE0C10FF17375D27002BD6AC /* SMTouch.m */,
-				BE0E081D172BE16A00599EC0 /* SMActionSimulator.h */,
-				BE0E081E172BE16A00599EC0 /* SMActionSimulator.m */,
 				BE0E0803172BA67C00599EC0 /* SMAlgorithm.h */,
 				BE0E0804172BA67C00599EC0 /* SMAlgorithm.m */,
 				BE0E0805172BA67C00599EC0 /* SMConfig.h */,
@@ -198,7 +193,6 @@
 				BE0E080A172BA67C00599EC0 /* SMAlgorithm.m in Sources */,
 				BE0E080B172BA67C00599EC0 /* SMSmartMonkey.m in Sources */,
 				BE0E080C172BA67C00599EC0 /* UIView+SMSmartMonkey.m in Sources */,
-				BE0E0823172BE16A00599EC0 /* SMActionSimulator.m in Sources */,
 				BE0E0824172BE16A00599EC0 /* UIButton+SMSmartMonkey.m in Sources */,
 				BE0E0825172BE16A00599EC0 /* UITextField+SMSmartMonkey.m in Sources */,
 				BE0C110017375D27002BD6AC /* SMActionDirector.m in Sources */,
