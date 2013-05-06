@@ -40,7 +40,7 @@
 + (void)startSmartMoneky:(NSTimer *)timer
 {
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
-
+    
     // get current valid subview
     NSMutableArray *allSubviewsArray = [NSMutableArray arrayWithArray:[self validSubviewsOfView:window coverableViewsArray:nil]];
     

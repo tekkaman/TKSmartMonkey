@@ -16,8 +16,10 @@
     UIWindow* _smWindow;
     UIView* _smView;
     CGPoint _smPoint;
+    CGPoint _smPrivious;
 }
 
+#pragma mark - init methods
 + (id)touchWithTarget:(UIView*)target phase:(UITouchPhase)phase
 {
     SMTouch *smTouch = [[SMTouch alloc] initWithTarget:target phase:phase];
@@ -34,11 +36,43 @@
         _smWindow = [UIApplication sharedApplication].delegate.window;
         _smView = target;
         _smPoint = CGPointMake(target.bounds.size.width/2, target.bounds.size.height/2);
+        _smPrivious = _smPoint;
     }
     
     return self;
 }
 
++ (id)touchWithTarget:(UIView *)target point:(CGPoint)point phase:(UITouchPhase)phase
+{
+    SMTouch *smTouch = [[SMTouch alloc] initWithTarget:target point:point phase:phase];
+    return [smTouch autorelease];
+}
+
+- (id)initWithTarget:(UIView*)target point:(CGPoint)point phase:(UITouchPhase)phase;
+{
+    if (self = [self initWithTarget:target phase:phase])
+    {
+        _smPoint = point;
+    }
+    return self;
+}
+
++ (id)touchWithTarget:(UIView *)target point:(CGPoint)point previous:(CGPoint)privious phase:(UITouchPhase)phase
+{
+    SMTouch *smTouch = [[SMTouch alloc] initWithTarget:target point:point previous:privious phase:phase];
+    return [smTouch autorelease];
+}
+
+- (id)initWithTarget:(UIView*)target point:(CGPoint)point previous:(CGPoint)privious phase:(UITouchPhase)phase
+{
+    if (self = [self initWithTarget:target point:point phase:phase])
+    {
+        _smPrivious = privious;
+    }
+    return self;
+}
+
+#pragma mark - public methods
 - (NSTimeInterval)timestamp
 {
     return _smTimestamp;
@@ -74,7 +108,7 @@
 // 只有UITouchPhaseMoved才提供此函数实现
 - (CGPoint)previousLocationInView:(UIView *)view
 {
-    return CGPointZero;
+    return _smPrivious;
 }
 
 @end

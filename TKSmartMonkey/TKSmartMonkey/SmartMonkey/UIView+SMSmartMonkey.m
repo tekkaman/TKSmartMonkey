@@ -77,7 +77,8 @@
 
 - (void)simulateAction
 {
-    [SMActionDirector actionOneFingerTapOnView:self];
+    [SMActionDirector actOneFingerScrollOnView:self];
+//    [SMActionDirector actOneFingerTapOnView:self];
 }
 
 #pragma mark - internal methods

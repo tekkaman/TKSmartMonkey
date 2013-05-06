@@ -10,6 +10,13 @@
 
 @interface SMActionDirector : NSObject
 
-+ (void)actionOneFingerTapOnView:(UIView*)view;
+// return the number of actions
++ (NSInteger)actionCount;
+
+// perform one-finger tap on view
++ (void)actOneFingerTapOnView:(UIView*)view;
+
+// perform one-finger scroll on view
++ (void)actOneFingerScrollOnView:(UIView*)view;
 
 @end
