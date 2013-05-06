@@ -70,7 +70,7 @@
 {
     // UIButton will be covered by its pic, so just return YES
     if ([self isKindOfClass:[UIButton class]])
-        return NO;
+        return YES;
     
     return [self notCoveredByViews:self.subviews];
 }
