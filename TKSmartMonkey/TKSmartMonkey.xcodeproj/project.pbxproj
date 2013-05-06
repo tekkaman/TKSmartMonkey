@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0C110017375D27002BD6AC /* SMActionDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0C10FB17375D27002BD6AC /* SMActionDirector.m */; };
+		BE0C110117375D27002BD6AC /* SMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0C10FD17375D27002BD6AC /* SMEvent.m */; };
+		BE0C110217375D27002BD6AC /* SMTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0C10FF17375D27002BD6AC /* SMTouch.m */; };
 		BE0E07F5172BA63000599EC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0E07F4172BA63000599EC0 /* Foundation.framework */; };
 		BE0E07FA172BA63000599EC0 /* TKSmartMonkey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE0E07F9172BA63000599EC0 /* TKSmartMonkey.h */; };
 		BE0E07FC172BA63000599EC0 /* TKSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E07FB172BA63000599EC0 /* TKSmartMonkey.m */; };
@@ -32,6 +35,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE0C10FA17375D27002BD6AC /* SMActionDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActionDirector.h; sourceTree = "<group>"; };
+		BE0C10FB17375D27002BD6AC /* SMActionDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActionDirector.m; sourceTree = "<group>"; };
+		BE0C10FC17375D27002BD6AC /* SMEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMEvent.h; sourceTree = "<group>"; };
+		BE0C10FD17375D27002BD6AC /* SMEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMEvent.m; sourceTree = "<group>"; };
+		BE0C10FE17375D27002BD6AC /* SMTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTouch.h; sourceTree = "<group>"; };
+		BE0C10FF17375D27002BD6AC /* SMTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTouch.m; sourceTree = "<group>"; };
 		BE0E07F1172BA63000599EC0 /* libTKSmartMonkey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTKSmartMonkey.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0E07F4172BA63000599EC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE0E07F8172BA63000599EC0 /* TKSmartMonkey-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TKSmartMonkey-Prefix.pch"; sourceTree = "<group>"; };
@@ -111,6 +120,12 @@
 		BE0E0802172BA67C00599EC0 /* SmartMonkey */ = {
 			isa = PBXGroup;
 			children = (
+				BE0C10FA17375D27002BD6AC /* SMActionDirector.h */,
+				BE0C10FB17375D27002BD6AC /* SMActionDirector.m */,
+				BE0C10FC17375D27002BD6AC /* SMEvent.h */,
+				BE0C10FD17375D27002BD6AC /* SMEvent.m */,
+				BE0C10FE17375D27002BD6AC /* SMTouch.h */,
+				BE0C10FF17375D27002BD6AC /* SMTouch.m */,
 				BE0E081D172BE16A00599EC0 /* SMActionSimulator.h */,
 				BE0E081E172BE16A00599EC0 /* SMActionSimulator.m */,
 				BE0E0803172BA67C00599EC0 /* SMAlgorithm.h */,
@@ -186,6 +201,9 @@
 				BE0E0823172BE16A00599EC0 /* SMActionSimulator.m in Sources */,
 				BE0E0824172BE16A00599EC0 /* UIButton+SMSmartMonkey.m in Sources */,
 				BE0E0825172BE16A00599EC0 /* UITextField+SMSmartMonkey.m in Sources */,
+				BE0C110017375D27002BD6AC /* SMActionDirector.m in Sources */,
+				BE0C110117375D27002BD6AC /* SMEvent.m in Sources */,
+				BE0C110217375D27002BD6AC /* SMTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

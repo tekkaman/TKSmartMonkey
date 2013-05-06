@@ -6,6 +6,7 @@
 
 #import "UIView+SMSmartMonkey.h"
 #import "SMAlgorithm.h"
+#import "SMActionDirector.h"
 
 @implementation UIView (SMSmartMonkey)
 
@@ -69,42 +70,14 @@
 {
     // UIButton will be covered by its pic, so just return YES
     if ([self isKindOfClass:[UIButton class]])
-        return YES;
+        return NO;
     
     return [self notCoveredByViews:self.subviews];
 }
 
 - (void)simulateAction
 {
-    NSUInteger maxKeyNum = 3;
-    NSUInteger index = random()%maxKeyNum;
-    
-    index = 2;
-    
-    switch(index)
-    {
-        case 0:
-            if ([self respondsToSelector:@selector(accessibilityScroll:)])
-            {
-                maxKeyNum = UIAccessibilityScrollDirectionPrevious;
-                index = random()%maxKeyNum + 1;
-                [self accessibilityScroll:index];
-                break;
-            }
-        case 1:
-            if ([self respondsToSelector:@selector(accessibilityPerformEscape)])
-            {
-                [self accessibilityPerformEscape];
-                break;
-            }
-        case 2:
-            if ([self respondsToSelector:@selector(accessibilityPerformMagicTap)])
-            {
-                [self accessibilityPerformMagicTap];
-                break;
-            }
-    }
-
+    [SMActionDirector actionOneFingerTapOnView:self];
 }
 
 #pragma mark - internal methods
