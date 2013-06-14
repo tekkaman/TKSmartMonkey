@@ -5,8 +5,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMActionDirector.h"
 
-@interface UIView (SMSmartMonkey)
+@interface UIView (SMSmartMonkey) <SMActionProtocol>
 
 // whether receiver is within the screen boundary
 - (BOOL)isOnScreen;
@@ -22,8 +23,5 @@
 
 // whetehr receiver will be covered by its subviews
 - (BOOL)notCoveredBySubviews;
-
-// simualte user behavior
-- (void)simulateAction;
 
 @end

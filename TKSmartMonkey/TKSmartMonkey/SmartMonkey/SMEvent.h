@@ -21,13 +21,13 @@
 // add a SMTouch obj into the receiver
 - (void)addSMTouch:(SMTouch*)touch;
 
+// simulated methods
 - (UIEventType)type;
 - (UIEventSubtype)subtype;
 - (NSTimeInterval)timestamp;
-
 - (NSSet *)allTouches;
 - (NSSet *)touchesForWindow:(UIWindow *)window;
 - (NSSet *)touchesForView:(UIView *)view;
-
 - (NSInteger)_firstTouchForView:(UIView*)view;
+
 @end

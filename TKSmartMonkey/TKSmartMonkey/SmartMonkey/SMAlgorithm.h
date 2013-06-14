@@ -14,5 +14,8 @@
 // whether these two rect intersect
 + (BOOL)rectIntersected:(CGRect)rect1 with:(CGRect)rect2;
 
+// generate a random point within a specified view
++ (CGPoint)randomPointOfView:(UIView*)view;
+
 @end
 

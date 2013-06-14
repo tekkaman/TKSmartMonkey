@@ -5,12 +5,18 @@
 //
 
 #import "UITextField+SMSmartMonkey.h"
+#import "SMTapView.h"
 
 @implementation UITextField (SMSmartMonkey)
 
-- (void)simulateAction
+- (void)simulateActionWithPoint:(CGPoint)point;
 {
-    [self becomeFirstResponder];
+    [SMTapView showTapAtPoint:point fromView:self];
+    
+    if (self.isFirstResponder)
+        [self resignFirstResponder];
+    else
+        [self becomeFirstResponder];
 }
 
 @end

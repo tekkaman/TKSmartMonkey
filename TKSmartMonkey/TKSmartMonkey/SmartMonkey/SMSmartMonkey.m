@@ -8,6 +8,10 @@
 #import "SMAlgorithm.h"
 #import "UIView+SMSmartMonkey.h"
 #import "SMConfig.h"
+#import "SMTimeView.h"
+#import "SMAlertView.h"
+
+static NSTimer* smTimer = nil;
 
 @interface SMSmartMonkey ()
 
@@ -15,13 +19,16 @@
 + (void)load;
 
 // timer fire selector
-+ (void)startSmartMoneky:(NSTimer *)timer;
++ (void)onTimerFired:(NSTimer *)timer;
 
 // find the touchable views
 + (NSMutableArray*)validSubviewsOfView:(UIView*)root coverableViewsArray:(NSArray*)coverableViewsArray;
 
+// hit-test simulate
++ (void)performActionWithValidViewArray:(NSArray*)validViewArray;
+
 // simulate actions
-+ (void)performActionOnView:(UIView*)view;
++ (void)performActionOnView:(UIView*)view point:(CGPoint)point;
 
 @end
 
@@ -31,31 +38,77 @@
 {
     NSLog(@"SmartMoneky has been loaded.");
     
-    NSTimeInterval waitForMainVCToComplete = SM_ACTION_INTERVAL;
-    [NSTimer scheduledTimerWithTimeInterval:waitForMainVCToComplete target:self selector:@selector(startSmartMoneky:) userInfo:nil repeats:YES];
+    if (SM_ACTION_AT_STARTUP)
+        [self startSmartMonkey:NO];
     
     srand(time(0));
 }
 
-+ (void)startSmartMoneky:(NSTimer *)timer
+#pragma mark - public methods
+
++ (void)startSmartMonkey:(BOOL)alert
+{
+    if (alert)
+        [SMAlertView showAlert:@"start running"];
+    
+    NSTimeInterval waitForMainVCToComplete = SM_ACTION_INTERVAL;
+    smTimer = [NSTimer scheduledTimerWithTimeInterval:waitForMainVCToComplete target:self selector:@selector(onTimerFired:) userInfo:nil repeats:YES];
+}
+
++ (void)stopSmartMonkey
+{
+    [SMAlertView showAlert:@"stop running"];
+    
+    if (smTimer)
+    {
+        [smTimer invalidate];
+        smTimer = nil;
+    }
+}
+
++ (BOOL)isSmartMonkeyRunning
+{
+    return smTimer != nil;
+}
+
++ (void)switchStatus
+{
+    if ([self isSmartMonkeyRunning])
+        [self stopSmartMonkey];
+    else
+        [self startSmartMonkey:YES];
+}
+
+#pragma mark - internal methods
+
++ (void)onTimerFired:(NSTimer *)timer
 {
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     
     // get current valid subview
-    NSMutableArray *allSubviewsArray = [NSMutableArray arrayWithArray:[self validSubviewsOfView:window coverableViewsArray:nil]];
+    NSMutableArray *validViewsArray = [NSMutableArray arrayWithArray:[self validSubviewsOfView:window coverableViewsArray:nil]];
     
-    NSLog(@"Current has %d valid views.", [allSubviewsArray count]);
-    NSAssert(allSubviewsArray.count, @"Every scene have at least one view can be operated. It seems that the algorithm get error");
+    NSLog(@"Current has %d valid views.", [validViewsArray count]);
+    if (validViewsArray.count == 0)
+        return ;
     
-    // random select one view to perform action on
-    NSUInteger index = rand()%allSubviewsArray.count;
-    UIView *selectedView = allSubviewsArray[index];
-    NSLog(@"Select view : %@.", selectedView);
+//    [self printfViewArray:allSubviewsArray];
+//    return ;
     
-    [self performActionOnView:selectedView];
+    [self performActionWithValidViewArray:validViewsArray];
 }
 
-// return the touchable views array of root
++ (void)printfViewArray:(NSArray*)array
+{
+    NSUInteger i = 0;
+    for (UIView* view in array)
+    {
+        NSLog(@"%dth view : %@", i, view);
+        i++;
+    }
+}
+
+// return the touchable views array of root, obj[0] > obj[1] > obj[2] …… and so on
 + (NSMutableArray*)validSubviewsOfView:(UIView*)root coverableViewsArray:(NSArray*)coverableViewsArray
 {
     NSEnumerator *enumerator = [root.subviews reverseObjectEnumerator];
@@ -67,21 +120,28 @@
     UIView *subview = nil;
     while ( subview = [enumerator nextObject])
     {
-        if (subview.userInteractionEnabled == YES && subview.hidden == NO)
+        if (subview.tag == SMTimeView_Tag)
+            continue;
+        
+        if (subview.userInteractionEnabled == YES && subview.hidden == NO && subview.alpha > 0)
         {
-            // if subview is not onscreen, jsut abandon it
+            // if a control is not enabled, just abondon it
+            if ([subview isKindOfClass:NSClassFromString(@"UIControl")] && [(UIControl*)subview isEnabled] == NO)
+                continue;
+                
+            // if subview is not onscreen, just abandon it
             if ([subview isOnScreen] == NO)
                 continue;
             
             // if subview isn't covered by siblings
             if ([subview notCoveredByViews:newCoverableViewsArray])
             {
-                // if subview isn't covered by its subviews
-                if ([subview notCoveredBySubviews])
-                    [validSubviewsArray addObject:subview];
-                
                 // find touchable subview
                 [validSubviewsArray addObjectsFromArray:[self validSubviewsOfView:subview coverableViewsArray:newCoverableViewsArray]];
+                
+                // if subview isn't covered by its subviews
+                if ([subview notCoveredBySubviews] && [self shouldNotExclude:subview])
+                    [validSubviewsArray addObject:subview];
             }
             
             // if subview covers full screen
@@ -94,11 +154,60 @@
     return validSubviewsArray;
 }
 
-+ (void)performActionOnView:(UIView*)view
++ (void)performActionWithValidViewArray:(NSArray*)validViewArray
 {
-    if ([view respondsToSelector:@selector(simulateAction)])
+    if (validViewArray.count == 0)
+        return ;
+    
+    NSEnumerator *enumerator = nil;
+    while(1)
     {
-        [view simulateAction];
+        // random select a view
+        NSUInteger index = (NSUInteger)random()%validViewArray.count;
+        UIView *target = (UIView*)validViewArray[index];
+        
+        // generate a random point within the view
+        CGPoint point = [SMAlgorithm randomPointOfView:target];
+        
+        // figure out who will handle this point
+        enumerator = validViewArray.objectEnumerator;
+        UIView *view = nil;
+        while (view = [enumerator nextObject])
+        {
+            CGPoint localPoint = [view convertPoint:point fromView:target];
+            if (CGRectContainsPoint(view.bounds, localPoint))
+            {
+                [self performActionOnView:view point:localPoint];
+                return ;
+            }
+        }
+    }
+}
+
++ (BOOL)shouldNotExclude:(UIView*)view
+{
+    if ([view isKindOfClass:NSClassFromString(@"UITableViewCellContentView")])
+        return NO;
+    if ([view isKindOfClass:NSClassFromString(@"_UISwitchInternalView")])
+        return NO;
+    if ([view isKindOfClass:NSClassFromString(@"UIGroupTableViewCellBackground")])
+        return NO;
+    if ([view isKindOfClass:NSClassFromString(@"UITextFieldBorderView")])
+        return NO;
+    if ([view isKindOfClass:NSClassFromString(@"UIWebBrowserView")])
+        return NO;
+    if ([view isKindOfClass:NSClassFromString(@"_UIWebViewScrollView")])
+        return NO;
+    
+    return YES;
+}
+
++ (void)performActionOnView:(UIView*)view point:(CGPoint)point
+{
+    NSLog(@"Select view : %@.", view);
+    if ([view respondsToSelector:@selector(simulateActionWithPoint:)])
+    {
+        [view simulateActionWithPoint:point];
     }
     else
         NSAssert(0, @"This can't happen. If you down here, You may not include UIView+SMSmartMonkey files.");

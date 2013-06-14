@@ -23,4 +23,10 @@
     return !CGRectIsNull(result);
 }
 
++ (CGPoint)randomPointOfView:(UIView*)view
+{
+    return CGPointMake(random()%(NSInteger)view.bounds.size.width,
+                       random()%(NSInteger)view.bounds.size.height);
+}
+
 @end

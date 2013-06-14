@@ -72,13 +72,36 @@
     if ([self isKindOfClass:[UIButton class]])
         return YES;
     
+    // UIWebView will covered by UIWebViewInternal, so just return YES
+    if ([self isKindOfClass:[UIWebView class]])
+        return YES;
+    
+    // abandon tableViewCell, let talbeView handle this situation
+    if ([self isKindOfClass:NSClassFromString(@"UITableViewCell")])
+        return NO;
+    
     return [self notCoveredByViews:self.subviews];
 }
 
-- (void)simulateAction
+#pragma mark - SMActionProtocol
+
+- (void)simulateActionWithPoint:(CGPoint)point
 {
-    [SMActionDirector actOneFingerScrollOnView:self];
-//    [SMActionDirector actOneFingerTapOnView:self];
+    NSUInteger actionCount = [SMActionDirector actionCount];
+    
+    switch (random()%actionCount)
+    {
+        case 0:
+            [SMActionDirector actOneFingerTapOnView:self point:point];
+            break;
+        case 1:
+            [SMActionDirector actOneFingerScrollOnView:self startPoint:point];
+            break;
+        case 2:
+            [SMActionDirector actOneFingerTwistOnView:self startPoint:point];
+        default:
+            break;
+    }
 }
 
 #pragma mark - internal methods
@@ -107,6 +130,7 @@
         
         NSInteger x0 = frame.origin.x;
         NSInteger x1 = x0 + frame.size.width;
+        
         [sortedArray addObject:[NSNumber numberWithInteger:x0]];
         [sortedArray addObject:[NSNumber numberWithInteger:x1]];
     }
@@ -117,7 +141,27 @@
         return [x0 compare:x1];
     }];
     
-    return sortedArray;
+    NSMutableArray *finalArray = [NSMutableArray array];
+    
+    // remove duplicated ones
+    NSNumber *oldNumber = nil;
+    for (NSNumber *newNumber in sortedArray)
+    {
+        if (oldNumber == nil)
+        {
+            oldNumber = newNumber;
+            [finalArray addObject:newNumber];
+            continue;
+        }
+    
+        if ([newNumber integerValue] != [oldNumber integerValue])
+        {
+            oldNumber = newNumber;
+            [finalArray addObject:newNumber];
+        }
+    }
+    
+    return finalArray;
 }
 
 // divide rect using xArray, return sorted array
@@ -187,8 +231,8 @@
     
     NSUInteger rectsNum = rectsArray.count;
     NSUInteger index = 0;
-    NSInteger x, y, width, heigth;
-    NSInteger coveredX, coveredY;
+    NSInteger x, y, width;
+    NSInteger coveredX = 0, coveredY = 0;
     
     while (index < rectsNum)
     {
@@ -196,7 +240,6 @@
         x = rect.origin.x;
         y = rect.origin.y;
         width = rect.size.width;
-        heigth = rect.size.height;
         
         if ([SMAlgorithm rectIntersected:frame with:rect] == NO)
             continue;
@@ -221,7 +264,7 @@
                 break;
             
             // y does not successive, we confirm that coveration does not happen
-            if (nextRect.origin.y > y && nextRect.origin.y > y0 && nextRect.origin.y + 1 < y1 )
+            if (nextRect.origin.y > y && nextRect.origin.y > y0 && y < y1 )
                 return NO;
             
             y = nextRect.origin.y + nextRect.size.height;

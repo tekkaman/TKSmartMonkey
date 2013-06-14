@@ -20,6 +20,7 @@
 }
 
 #pragma mark - init methods
+
 + (id)touchWithTarget:(UIView*)target phase:(UITouchPhase)phase
 {
     SMTouch *smTouch = [[SMTouch alloc] initWithTarget:target phase:phase];
@@ -35,7 +36,7 @@
         _smTapCount = 1;
         _smWindow = [UIApplication sharedApplication].delegate.window;
         _smView = target;
-        _smPoint = CGPointMake(target.bounds.size.width/2, target.bounds.size.height/2);
+        _smPoint = CGPointMake(target.bounds.size.width, target.bounds.size.height);
         _smPrivious = _smPoint;
     }
     
@@ -73,10 +74,12 @@
 }
 
 #pragma mark - public methods
+
 - (NSTimeInterval)timestamp
 {
     return _smTimestamp;
 }
+
 - (UITouchPhase)phase
 {
     return _smPhase;

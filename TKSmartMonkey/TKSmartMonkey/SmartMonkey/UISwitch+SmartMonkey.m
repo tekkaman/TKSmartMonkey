@@ -1,14 +1,18 @@
 //
-//  UIButton+SmartMonkey.m
+//  UISwitch+SmartMonkey.m
+//  BaiduBoxApp
 //
-//  Created by tekka on 13-4-27.
+//  Created by Tekka on 6/11/13.
+//  Copyright (c) 2013 Baidu. All rights reserved.
 //
 
-#import "UIButton+SMSmartMonkey.h"
+#import "UISwitch+SmartMonkey.h"
 #import "UIView+SMSmartMonkey.h"
 #import "SMTapView.h"
 
-@implementation UIButton (SMSmartMonkey)
+@implementation UISwitch (SmartMonkey)
+
+#pragma mark - SMActionProtocol
 
 - (void)simulateActionWithPoint:(CGPoint)point
 {
@@ -18,7 +22,12 @@
     {
         // show tap view
         [SMTapView showTapAtPoint:point fromView:self];
-                       
+        
+        if (self.on)
+            [self setOn:NO animated:YES];
+        else
+            [self setOn:YES animated:YES];
+        
         // delay 100ms loop, let developers see tapView first
         double delayInSeconds = 0.3;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -29,15 +38,15 @@
             UIControlEvents event;
             while(1)
             {
-                if (events & (1<<index))
-                {
-                    event = (1<<index);
-                    [self sendActionsForControlEvents:event];
-                    return ;
-                }
-                
-                if (++index == maxKeyNum)
-                    index = 0;
+               if (events & (1<<index))
+               {
+                   event = (1<<index);
+                   [self sendActionsForControlEvents:event];
+                   return ;
+               }
+               
+               if (++index == maxKeyNum)
+                   index = 0;
             }
         });
     }
@@ -45,7 +54,6 @@
     {
         [super simulateActionWithPoint:point];
     }
-
 }
 
 @end

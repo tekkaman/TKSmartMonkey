@@ -5,9 +5,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMActionDirector.h"
 
-@interface UIButton (SMSmartMonkey)
-
-- (void)simulateAction;
+@interface UIButton (SMSmartMonkey) <SMActionProtocol>
 
 @end

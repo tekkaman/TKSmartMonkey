@@ -5,9 +5,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMActionDirector.h"
 
-@interface UITextField (SMSmartMonkey)
-
-- (void)simulateAction;
+@interface UITextField (SMSmartMonkey) <SMActionProtocol>
 
 @end

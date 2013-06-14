@@ -7,7 +7,10 @@
 #ifndef TKSmartMonkey_SMConfig_h
 #define TKSmartMonkey_SMConfig_h
 
-// you set this value to control the interval between every action
-#define SM_ACTION_INTERVAL  1.5
+// set this value to control the interval between every action
+#define SM_ACTION_INTERVAL  2.0
+
+// set this value to specify whether simulate actions on startup or not
+#define SM_ACTION_AT_STARTUP    1
 
 #endif

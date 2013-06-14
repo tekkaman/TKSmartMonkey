@@ -8,33 +8,38 @@
 
 #import "SMEvent.h"
 
+@interface SMEvent ()
+
+@property (nonatomic, retain) NSMutableSet *smTouchSet;
+
+@end
+
 @implementation SMEvent
 {
     NSTimeInterval _smTimestamp;
-    NSMutableSet* _smTouchSet;
 }
 
 // return a touch event
 + (id)eventForTouch
 {
-    SMEvent *event = [[SMEvent alloc] init];
-    return [event autorelease];
+    return [[[SMEvent alloc] init] autorelease];
 }
 
-// init timestamp
+#pragma mark - init & dealloc
+
 - (id)init
 {
     if (self = [super init])
     {
         _smTimestamp = [[NSProcessInfo processInfo] systemUptime];
-        _smTouchSet = [NSMutableSet set];
+        _smTouchSet = [[NSMutableSet set] retain];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [NSMutableSet release];
+    self.smTouchSet = nil;
     [super dealloc];
 }
 
@@ -43,6 +48,8 @@
 {
     [_smTouchSet addObject:touch];
 }
+
+#pragma mark - simulate
 
 - (UIEventType)type
 {
@@ -66,13 +73,13 @@
 
 - (NSSet *)touchesForWindow:(UIWindow *)window
 {
-    return [_smTouchSet copy];
+    return [[_smTouchSet copy] autorelease];
 }
 
 // for simplification, just return all touches
 - (NSSet *)touchesForView:(UIView *)view
 {
-    return [_smTouchSet copy];
+    return [[_smTouchSet copy] autorelease];
 }
 
 - (NSInteger)_firstTouchForView:(UIView*)view
