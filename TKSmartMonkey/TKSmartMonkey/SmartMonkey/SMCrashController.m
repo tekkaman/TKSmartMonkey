@@ -1,13 +1,13 @@
 //
 //  SMCrashController.m
-//  BaiduBoxApp
 //
 //  Created by Tekka on 6/11/13.
-//  Copyright (c) 2013 Baidu. All rights reserved.
 //
 
 #import "SMCrashController.h"
 #import "SMTimeView.h"
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 static const NSInteger UncaughtExceptionHandlerSkipAddressCount = 3;
 static const NSInteger UncaughtExceptionHandlerReportAddressCount = 15;
@@ -46,7 +46,6 @@ static void saveCallStackInfo(NSString* callStack)
     [text writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
-// 处理未捕获的异常
 static void smCustomHandleException(NSException *exception)
 {
     [SMCrashController unregisterUncaughtExceptionHandler];
@@ -55,19 +54,15 @@ static void smCustomHandleException(NSException *exception)
     saveCallStackInfo(callStack);
 }
 
-// 处理系统信号
 static void smCustomSignalHandler(int signal)
 {
-    // 进入异常处理时应第一时间恢复默认默认异常处理
     [SMCrashController unregisterUncaughtExceptionHandler];
     
-    // 获取调用栈信息
     NSException *exception = nil;
 	NSString *callStack = smDetailedBacktrace(exception);
     
     saveCallStackInfo(callStack);
     
-    // 重新发出信号, 保持系统默认处理
     raise(signal);
 }
 
@@ -79,7 +74,7 @@ static NSString* smDetailedBacktrace(NSException *exception)
     if (exception != nil)
     {
         // iOS >= 4.0
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(IOS_4_0))
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"4.0"))
         {
             NSArray *callStackSyms = [exception callStackSymbols]; // NS_AVAILABLE(4_0);
             if ([callStackSyms count] > 0)
@@ -92,19 +87,17 @@ static NSString* smDetailedBacktrace(NSException *exception)
                 }
             }
         }
-        // 异常产生的原因
         [exceptionReason appendString:[exception reason]];
     }
     
     if (backTrace.length == 0)
     {
-        // 捕获信号
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(IOS_4_0))
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"4.0"))
         {
             NSMutableArray *callStackSyms = [NSMutableArray arrayWithArray:[NSThread callStackSymbols]]; // NS_AVAILABLE(4_0);
             if ([callStackSyms count] > 3)
             {
-                int index = 3; // 屏蔽移动统计SDK内部函数调用序列
+                int index = 3;
                 for (; index < [callStackSyms count]; index++)
                 {
                     [backTrace appendString:[callStackSyms objectAtIndex:index]];

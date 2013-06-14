@@ -1,9 +1,7 @@
 //
 //  SMTapView.m
-//  BaiduBoxApp
 //
 //  Created by tekka on 13-6-9.
-//  Copyright (c) 2013年 Baidu. All rights reserved.
 //
 
 #import "SMTapView.h"

@@ -1,9 +1,7 @@
 //
 //  SMAlertView.h
-//  BaiduBoxApp
 //
 //  Created by Tekka on 6/12/13.
-//  Copyright (c) 2013 Baidu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

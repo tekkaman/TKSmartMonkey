@@ -1,9 +1,7 @@
 //
 //  SMActionDirector.m
-//  BaiduBoxApp
 //
 //  Created by tekka on 13-5-6.
-//  Copyright (c) 2013年 Baidu. All rights reserved.
 //
 
 #import "SMActionDirector.h"

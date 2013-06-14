@@ -18,6 +18,13 @@
 		BE0E080C172BA67C00599EC0 /* UIView+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0809172BA67C00599EC0 /* UIView+SMSmartMonkey.m */; };
 		BE0E0824172BE16A00599EC0 /* UIButton+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0820172BE16A00599EC0 /* UIButton+SMSmartMonkey.m */; };
 		BE0E0825172BE16A00599EC0 /* UITextField+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0E0822172BE16A00599EC0 /* UITextField+SMSmartMonkey.m */; };
+		BE5D63D7176B170A004C0317 /* SMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63CA176B1709004C0317 /* SMAlertView.m */; };
+		BE5D63D8176B170A004C0317 /* SMCrashController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63CC176B1709004C0317 /* SMCrashController.m */; };
+		BE5D63D9176B170A004C0317 /* SMTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63CE176B1709004C0317 /* SMTapView.m */; };
+		BE5D63DA176B170A004C0317 /* SMTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63D0176B170A004C0317 /* SMTimeView.m */; };
+		BE5D63DB176B170A004C0317 /* UISwitch+SmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63D2176B170A004C0317 /* UISwitch+SmartMonkey.m */; };
+		BE5D63DC176B170A004C0317 /* UITableView+SmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63D4176B170A004C0317 /* UITableView+SmartMonkey.m */; };
+		BE5D63DD176B170A004C0317 /* UIWebView+SMSmartMonkey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5D63D6176B170A004C0317 /* UIWebView+SMSmartMonkey.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +63,20 @@
 		BE0E0820172BE16A00599EC0 /* UIButton+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SMSmartMonkey.m"; sourceTree = "<group>"; };
 		BE0E0821172BE16A00599EC0 /* UITextField+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SMSmartMonkey.h"; sourceTree = "<group>"; };
 		BE0E0822172BE16A00599EC0 /* UITextField+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SMSmartMonkey.m"; sourceTree = "<group>"; };
+		BE5D63C9176B1709004C0317 /* SMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAlertView.h; sourceTree = "<group>"; };
+		BE5D63CA176B1709004C0317 /* SMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAlertView.m; sourceTree = "<group>"; };
+		BE5D63CB176B1709004C0317 /* SMCrashController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCrashController.h; sourceTree = "<group>"; };
+		BE5D63CC176B1709004C0317 /* SMCrashController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCrashController.m; sourceTree = "<group>"; };
+		BE5D63CD176B1709004C0317 /* SMTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTapView.h; sourceTree = "<group>"; };
+		BE5D63CE176B1709004C0317 /* SMTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTapView.m; sourceTree = "<group>"; };
+		BE5D63CF176B170A004C0317 /* SMTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTimeView.h; sourceTree = "<group>"; };
+		BE5D63D0176B170A004C0317 /* SMTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTimeView.m; sourceTree = "<group>"; };
+		BE5D63D1176B170A004C0317 /* UISwitch+SmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+SmartMonkey.h"; sourceTree = "<group>"; };
+		BE5D63D2176B170A004C0317 /* UISwitch+SmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+SmartMonkey.m"; sourceTree = "<group>"; };
+		BE5D63D3176B170A004C0317 /* UITableView+SmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SmartMonkey.h"; sourceTree = "<group>"; };
+		BE5D63D4176B170A004C0317 /* UITableView+SmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SmartMonkey.m"; sourceTree = "<group>"; };
+		BE5D63D5176B170A004C0317 /* UIWebView+SMSmartMonkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+SMSmartMonkey.h"; sourceTree = "<group>"; };
+		BE5D63D6176B170A004C0317 /* UIWebView+SMSmartMonkey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+SMSmartMonkey.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +138,20 @@
 		BE0E0802172BA67C00599EC0 /* SmartMonkey */ = {
 			isa = PBXGroup;
 			children = (
+				BE5D63C9176B1709004C0317 /* SMAlertView.h */,
+				BE5D63CA176B1709004C0317 /* SMAlertView.m */,
+				BE5D63CB176B1709004C0317 /* SMCrashController.h */,
+				BE5D63CC176B1709004C0317 /* SMCrashController.m */,
+				BE5D63CD176B1709004C0317 /* SMTapView.h */,
+				BE5D63CE176B1709004C0317 /* SMTapView.m */,
+				BE5D63CF176B170A004C0317 /* SMTimeView.h */,
+				BE5D63D0176B170A004C0317 /* SMTimeView.m */,
+				BE5D63D1176B170A004C0317 /* UISwitch+SmartMonkey.h */,
+				BE5D63D2176B170A004C0317 /* UISwitch+SmartMonkey.m */,
+				BE5D63D3176B170A004C0317 /* UITableView+SmartMonkey.h */,
+				BE5D63D4176B170A004C0317 /* UITableView+SmartMonkey.m */,
+				BE5D63D5176B170A004C0317 /* UIWebView+SMSmartMonkey.h */,
+				BE5D63D6176B170A004C0317 /* UIWebView+SMSmartMonkey.m */,
 				BE0C10FA17375D27002BD6AC /* SMActionDirector.h */,
 				BE0C10FB17375D27002BD6AC /* SMActionDirector.m */,
 				BE0C10FC17375D27002BD6AC /* SMEvent.h */,
@@ -198,6 +233,13 @@
 				BE0C110017375D27002BD6AC /* SMActionDirector.m in Sources */,
 				BE0C110117375D27002BD6AC /* SMEvent.m in Sources */,
 				BE0C110217375D27002BD6AC /* SMTouch.m in Sources */,
+				BE5D63D7176B170A004C0317 /* SMAlertView.m in Sources */,
+				BE5D63D8176B170A004C0317 /* SMCrashController.m in Sources */,
+				BE5D63D9176B170A004C0317 /* SMTapView.m in Sources */,
+				BE5D63DA176B170A004C0317 /* SMTimeView.m in Sources */,
+				BE5D63DB176B170A004C0317 /* UISwitch+SmartMonkey.m in Sources */,
+				BE5D63DC176B170A004C0317 /* UITableView+SmartMonkey.m in Sources */,
+				BE5D63DD176B170A004C0317 /* UIWebView+SMSmartMonkey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
