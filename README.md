@@ -1,8 +1,8 @@
 TKSmartMonkey
 =============
-
 TKSmartMonkey is an automation test tool for iOS&amp;OSX applications，written in objective-c。
-All Code was written by tekkaxie.
+All Code was written by tekkaxie. There're so many features of TKSmartMonkey that I can not 
+cover all the these in this article. If you're interested, pull and read the code.
 
 What is this project used to do?
 -------------
@@ -35,7 +35,7 @@ The major feature of TKSmartMonkey
 -------------
 1. The problems mentioned above all have been resolved.
 1. It was written in objc which makes TKSmartMonkey really efficient.
-2. You need not add any codes into your own project, you just need inclue TKSmartMonkey source files 
+2. You don't need add any codes into your own project, you just need inclue TKSmartMonkey source files 
 into your project and compile it, and then it just works.
 3. With crash log support, once your program crash, you can always get the symbolicated crash log.
 4. You need not connect you device with the computer, you can test your program at any location and 
