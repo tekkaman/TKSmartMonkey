@@ -81,5 +81,5 @@ Techniques behind the scene
 		
 How to use TKSmartMonkey
 -------------
-1、Download the codes, copy SmartMonkey directory into your project.
-2、Compile your project and run, you'll see TKSmartMonkey is running with your program.
+		1) Download the codes, copy SmartMonkey directory into your project.\n
+		2) Compile your project and run, you'll see TKSmartMonkey is running with your program.
