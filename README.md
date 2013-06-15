@@ -17,13 +17,19 @@ we run the monkey to test our program.
 2. Inconvenience 2: Monkey's running is relied on Instruments, we have to set up Instrument.
 3. Inconvenience 3: The crash log is not symbolicated, once you lost the original .dSYM, you 
 cannot symbolicate the crash log in the device.
-3. Unstabitily 1: Once you disconnect the device from the computer, the testing is interrupted.
-4. Unstability 2: Once your computer or Instruemnts out of response, the testing is interrupted.
-5. Efficiently 1: The UIAutomation framework is really inefficient, that this feature limits its
+4. Unstabitily 1: Once you disconnect the device from the computer, the testing is interrupted.
+5. Unstability 2: Once your computer or Instruemnts out of response, the testing is interrupted. 
+And you cannot see how long did your program has run.
+6. Inefficienty 1: The UIAutomation framework is really inefficient, that this feature limits its
+7. Inefficienty 2: As the result of clause 6, the monkey relied on UIAutomation is really inefficient.
+Because it just act like a real monkey, and it knows nothing about you program. For example, if 
+your program has run into a scene that only a small button is touchable, just think about that, 
+the monkey will stay on that scene for too long. If the size of the button is 10*10, the opportunity
+of exit the scene will be 10*10/320*480 = 0.0651%.
 Functionality. Fox example, enumerate the entire view-hierarchy will cost 5+ seconds.
 and so on ...
 
-With so many problems, I constructed this project. TKSmartMonkey kit resolve the problems mentioned above.
+With so many problems, I constructed this project. TKSmartMonkey Kit resolves all the problems as mentioned above.
 
 The major feature of TKSmartMonkey
 -------------
@@ -34,5 +40,5 @@ into your project and compile it, and then it just works.
 3. With crash log support, once your program crash, you can always get the symbolicated crash log.
 4. You need not connect you device with the computer, you can test your program at any location and 
 any time as you like.
-
+5. The execution is really efficient. I will cover this topic in the section below.
 
