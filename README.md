@@ -43,7 +43,7 @@ any time as you like.
 5. The execution is really efficient. I will cover this topic in the section below.
 6. You can see how long you program has run, even though it has crashed.
 
-techniques behind the scene
+Techniques behind the scene
 -------------
 ### 1. How to simulate UIEvent?
 		1) I subclass UIEvent into SMEvent. SMEvent provides what UIEvent provides to UIViews 
@@ -81,3 +81,5 @@ techniques behind the scene
 		
 How to use TKSmartMonkey
 -------------
+1、Download the codes, copy SmartMonkey directory into your project.
+2、Compile your project and run, you'll see TKSmartMonkey is running with your program.
