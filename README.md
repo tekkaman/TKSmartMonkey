@@ -21,12 +21,12 @@ cannot symbolicate the crash log in the device.
 5. Unstability 2: Once your computer or Instruemnts out of response, the testing is interrupted. 
 And you cannot see how long did your program has run.
 6. Inefficienty 1: The UIAutomation framework is really inefficient, that this feature limits its
+Functionality. Fox example, enumerate the entire view-hierarchy will cost 5+ seconds.
 7. Inefficienty 2: As the result of clause 6, the monkey relied on UIAutomation is really inefficient.
 Because it just act like a real monkey, and it knows nothing about you program. For example, if 
 your program has run into a scene that only a small button is touchable, just think about that, 
 the monkey maybe will stay on that scene for a long time. If the size of the button is 10*10, the opportunity
 of exiting the scene will be 10*10/320*480 = 0.0651%.
-Functionality. Fox example, enumerate the entire view-hierarchy will cost 5+ seconds.
 and so on ...
 
 With so many problems, I constructed this project. TKSmartMonkey Kit resolves all the problems as mentioned above.
