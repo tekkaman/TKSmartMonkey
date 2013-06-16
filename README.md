@@ -63,7 +63,7 @@ Techniques behind the scene
 		We can enumerate the view hierarchy within less than 1 seconds. (generally less than 0.1 second)
 		2) TKSmartMonkey is not random scratch around the entire screen. It first pick out the valid view
 		(userInteraction = YES, alpha > 0, enabled = YES, frame in screen, etc ...), and then random select
-		one the view to act. So TKSmartMonkey is totally different from UIAutomation Monkey.And this approach
+		one view to act. So TKSmartMonkey is totally different from UIAutomation Monkey.And this approach
 		makes TKSmartMonkey so efficient.
 		
 ### 4. Is TKSmartMonkey convenient?
@@ -81,5 +81,5 @@ Techniques behind the scene
 		
 How to use TKSmartMonkey
 -------------
-		1) Download the codes, copy SmartMonkey directory into your project.\n
+		1) Download the codes, copy SmartMonkey directory into your project.
 		2) Compile your project and run, you'll see TKSmartMonkey is running with your program.
